@@ -1,6 +1,6 @@
 # Melatico
 
-TODO: Write a gem description
+Simple ruby library to generate Melate (Mexico's Lotto) combinations.
 
 ## Installation
 

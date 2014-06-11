@@ -41,5 +41,23 @@ describe Melatico do
         end
       end
     end
+
+    context 'number of drawings' do
+      let(:drawing) { Melatico.draw(3) }
+
+      it 'returns a 2D array' do
+        expect(drawing).to be_a(Array)
+      end
+
+      it 'size depends on number passed as argument' do
+        expect(drawing.size).to eq(3)
+      end
+
+      it 'contents are arrays' do
+        drawing.each do |draw|
+          expect(draw).to be_a(Array)
+        end
+      end
+    end
   end
 end
