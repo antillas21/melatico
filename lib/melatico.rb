@@ -5,38 +5,10 @@ module Melatico
   NUMBERS_RANGE = (1..56)
 
   def self.draw(sets = 1)
-    return pick_numbers if sets == 1
-
-    sets.times.map { pick_numbers }
-  end
-
-  private
-
-  def self.pick_numbers
-    results = []
-
-    PICKS.times do
-      pick = rand(NUMBERS_RANGE)
-      add_to_results(pick, results)
+    results = sets.times.map do
+      NUMBERS_RANGE.to_a.sample(PICKS).sort
     end
-
-    results.sort
-  end
-
-  def self.add_to_results(number, collection)
-    number = confirm_uniqueness(number, collection)
-    collection << number
-  end
-
-  def self.confirm_uniqueness(number, collection)
-    until is_unique?(number, collection)
-      number = rand(NUMBERS_RANGE)
-    end
-
-    number
-  end
-
-  def self.is_unique?(number, collection)
-    not collection.include?(number)
+    return results.flatten if sets == 1
+    results
   end
 end
