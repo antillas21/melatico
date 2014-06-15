@@ -5,12 +5,13 @@ module Melatico
   NUMBERS_RANGE = (1..56)
 
   def self.draw(sets = 1)
-    results = []
-    until results.size == sets
-      results << NUMBERS_RANGE.to_a.sample(PICKS).sort
-      results = results.uniq
-    end
-    return results.flatten if sets == 1
-    results
+    return pick_numbers if sets == 1
+    sets.times.map { pick_numbers }
+  end
+
+  private
+
+  def self.pick_numbers
+    NUMBERS_RANGE.to_a.sample(PICKS).sort
   end
 end
